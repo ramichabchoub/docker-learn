@@ -1,0 +1,37 @@
+docker build -t express-node-app . //to build image
+
+docker image ls //to show all images
+
+docker run --name express-node-app-container express-node-app
+docker run --name express-node-app-container -d express-node-app
+docker run --name express-node-app-container -d -p 3001:3001 express-node-app // -d to continue use cmd, -p to acces container with my machine in browser
+
+docker ps //to show all running container
+
+docker stop express-node-app-container
+docker start express-node-app-container
+
+docker rm -f express-node-app-container //to remove specific container
+
+docker exec -it express-node-app-container bash //to enter container cmd
+pwd ls -a -l -la
+
+//Hot Reload
+docker run --name express-node-app-container-3 -v C:/Users/ramic/Desktop/docker:/app -d -p 3003:3001 express-node-app-3
+docker run --name express-node-app-container-3 -v C:/Users/ramic/Desktop/docker:/app:ro -d -p 3003:3001 express-node-app-3 //:ro => read only
+docker run --name express-node-app-container-3 -v %cd%:/app:ro -d -p 3003:3001 express-node-app-3
+docker run --name express-node-app-container-3 -v C:/Users/ramic/Desktop/docker:/app:ro -v /app/node_modules -d -p 3003:3001 express-node-app-3
+docker run --name express-node-app-container-3 -v C:/Users/ramic/Desktop/docker/src:/app/src:ro -d -p 3003:3001 express-node-app-3
+
+docker logs express-node-app-container-3
+
+docker-compose up -d
+docker-compose down
+docker-compose stop [service_name]
+
+//add envirement variables:
+docker run --name express-node-app-container-3 -v C:/Users/ramic/Desktop/docker/src:/app/src:ro --env PORT=7000 --env NODE_ENV=devlopment -d -p 3003:3001 express-node-app-3
+docker run --name express-node-app-container-3 -v C:/Users/ramic/Desktop/docker/src:/app/src:ro --env PORT=7000 --env-file ./.env -d -p 3003:3001 express-node-app-3
+
+//show envirement variables: (first enter to container bash)
+printenv
