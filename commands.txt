@@ -14,7 +14,7 @@ docker start express-node-app-container
 docker rm -f express-node-app-container //to remove specific container
 
 docker exec -it express-node-app-container bash //to enter container cmd
-pwd ls -a -l -la -d nod*
+pwd ls -a -l -la
 
 //Hot Reload
 docker run --name express-node-app-container-3 -v C:/Users/ramic/Desktop/docker:/app -d -p 3003:3001 express-node-app-3
@@ -35,9 +35,3 @@ docker run --name express-node-app-container-3 -v C:/Users/ramic/Desktop/docker/
 
 //show envirement variables: (first enter to container bash)
 printenv
-
-=======================================================================================================================
-
-docker-compose -f docker-compose.dev.yml up -d
-docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d
-docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d --build
