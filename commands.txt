@@ -46,9 +46,15 @@ docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d --build
 
 =======================================================================================================================
 
-docker inspect express-node-app-container-3
+docker inspect express-node-app-container-3 //to get DB_HOST IP
 docker network ls
 docker network inspect [NETWORK_NAME]
 
+mongosh -u root -p example
 apt-get update && apt-get install -y mongodb-client
+mongo -u root -p example --authenticationDatabase admin
 docker exec -it docker-mongo-1 mongo -u root -p example --authenticationDatabase admin
+
+docker volume ls
+docker volume rm [volume_id or volume_hash] //to remove specific volume
+docker volume prune //to delete all unused volumes
