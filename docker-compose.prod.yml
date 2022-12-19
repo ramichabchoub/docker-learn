@@ -1,0 +1,11 @@
+version: "3"
+services:
+  node-app:
+    build:
+      context: .
+      # args:
+      #   - NODE_END=production
+      target: production
+    environment:
+      # - PORT=8000
+      - NODE_ENV=production
