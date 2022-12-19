@@ -15,6 +15,7 @@ docker rm -f express-node-app-container //to remove specific container
 
 docker exec -it express-node-app-container bash //to enter container cmd
 pwd ls -a -l -la -d nod*
+ls -d nod*
 
 //Hot Reload
 docker run --name express-node-app-container-3 -v C:/Users/ramic/Desktop/docker:/app -d -p 3003:3001 express-node-app-3
@@ -24,6 +25,7 @@ docker run --name express-node-app-container-3 -v C:/Users/ramic/Desktop/docker:
 docker run --name express-node-app-container-3 -v C:/Users/ramic/Desktop/docker/src:/app/src:ro -d -p 3003:3001 express-node-app-3
 
 docker logs express-node-app-container-3
+docker logs express-node-app-container-3 -f //-f to kepp watching logs
 
 docker-compose up -d
 docker-compose down
@@ -41,3 +43,12 @@ printenv
 docker-compose -f docker-compose.dev.yml up -d
 docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d
 docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d --build
+
+=======================================================================================================================
+
+docker inspect express-node-app-container-3
+docker network ls
+docker network inspect [NETWORK_NAME]
+
+apt-get update && apt-get install -y mongodb-client
+docker exec -it docker-mongo-1 mongo -u root -p example --authenticationDatabase admin
